@@ -29,8 +29,14 @@ RUN echo '{ \
   } \
 }' > /opt/gophish/config.json.template
 
-# Dynamic entrypoint - configures domain and email at runtime
+# Dynamic entrypoint with DEBUG
 RUN echo '#!/bin/sh\n\
+\n\
+# DEBUG: Print Railway env vars\n\
+echo "================================="\n\
+echo "DEBUG: Railway Environment"\n\
+printenv | grep RAILWAY || echo "No RAILWAY vars found"\n\
+echo "================================="\n\
 \n\
 # Copy template to actual config\n\
 cp /opt/gophish/config.json.template /opt/gophish/config.json\n\
