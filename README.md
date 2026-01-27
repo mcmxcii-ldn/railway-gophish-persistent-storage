@@ -2,7 +2,7 @@
 
 One-click deploy [Gophish](https://getgophish.com) phishing simulation platform to Railway with persistent data storage.
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/YOUR_TEMPLATE_ID)
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/ihNsBD?referralCode=T0Htsi&utm_medium=integration&utm_source=template&utm_campaign=generic)
 
 ## Features
 
