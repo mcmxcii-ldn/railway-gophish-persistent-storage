@@ -14,7 +14,7 @@ RUN echo '{ \
     "trusted_origins": ["RAILWAY_DOMAIN_PLACEHOLDER"] \
   }, \
   "phish_server": { \
-    "listen_url": "0.0.0.0:80", \
+    "listen_url": "0.0.0.0:3333", \
     "use_tls": false, \
     "cert_path": "example.crt", \
     "key_path": "example.key" \
