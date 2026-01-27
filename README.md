@@ -184,7 +184,7 @@ This deployment:
 
 - [Gophish Documentation](https://docs.getgophish.com)
 - [Railway Documentation](https://docs.railway.app)
-- [GitHub Issues](https://github.com/YOUR_USERNAME/gophish-railway-persistent/issues)
+- [GitHub Issues](https://github.com/mcmxcii-ldn/railway-gophish-persistent-storage/issues)
 
 ## License
 
