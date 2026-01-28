@@ -33,14 +33,15 @@ Click the **"Deploy on Railway"** button above and wait for initial deployment t
    - ✅ Use this URL in your phishing campaigns
 
 2. **TCP Proxy for Admin** (Port 3333):
-   - Settings > Networking > Add TCP Proxy
-   - Click the `:3333` box that appears
-   - You get: `lion.proxy.rlwy.net:12345`
-   - ✅ Use this to access admin interface at `http://lion.proxy.rlwy.net:12345`
+   - Settings > Networking > Click **"Add TCP Proxy"**
+   - Railway will show you a port configuration with `:3333`
+   - Click on the `:3333` box to see your unique proxy address
+   - You get something like: `shinkansen.proxy.rlwy.net:17008` (your address will be different!)
+   - ✅ Use this to access admin interface at `http://YOUR-PROXY-ADDRESS:PORT`
 
 **Important:**
 - Campaign URLs: Use `https://your-app.up.railway.app/` (HTTPS, port 80)
-- Admin login: Use `http://lion.proxy.rlwy.net:12345` (HTTP, TCP proxy)
+- Admin login: Use `http://YOUR-PROXY-ADDRESS:PORT` (HTTP, TCP proxy - the exact address shown in Railway)
 
 ### 3. First Redeploy
 
@@ -78,7 +79,7 @@ Please login with the username admin and the password [RANDOM_PASSWORD]
 
 ### 6. Login and Secure Your Account
 
-1. Open **admin interface** at your TCP proxy address (e.g., `http://lion.proxy.rlwy.net:12345`)
+1. Open **admin interface** at your TCP proxy address (the one from Step 2.2)
 2. Login with `admin` and the password from logs
 3. Go to **Settings** > **Account Settings**
 4. **Change your password immediately**
