@@ -21,15 +21,26 @@ Click the **"Deploy on Railway"** button above and wait for initial deployment t
 
 ✅ Volume is automatically configured at `/opt/gophish/data`
 
-### 2. Generate Public Domain
+### 2. Configure Networking
 
-**CRITICAL STEP** - This sets the `RAILWAY_PUBLIC_DOMAIN` environment variable:
+**Setup TWO ports:**
 
-1. Go to your Railway service
-2. Click **Settings** > **Networking**
-3. Click **Generate Domain**
-4. **Enter port: `3333`**
-5. Click **Generate**
+1. **Public Domain for Campaigns** (Port 80):
+   - Settings > Networking > Generate Domain
+   - **Enter port: `80`**
+   - Click Generate
+   - You get: `https://your-app.up.railway.app`
+   - ✅ Use this URL in your phishing campaigns
+
+2. **TCP Proxy for Admin** (Port 3333):
+   - Settings > Networking > Add TCP Proxy
+   - Click the `:3333` box that appears
+   - You get: `lion.proxy.rlwy.net:12345`
+   - ✅ Use this to access admin interface at `http://lion.proxy.rlwy.net:12345`
+
+**Important:**
+- Campaign URLs: Use `https://your-app.up.railway.app/` (HTTPS, port 80)
+- Admin login: Use `http://lion.proxy.rlwy.net:12345` (HTTP, TCP proxy)
 
 ### 3. First Redeploy
 
@@ -67,7 +78,7 @@ Please login with the username admin and the password [RANDOM_PASSWORD]
 
 ### 6. Login and Secure Your Account
 
-1. Open your Railway domain (e.g., `https://your-service.up.railway.app`)
+1. Open **admin interface** at your TCP proxy address (e.g., `http://lion.proxy.rlwy.net:12345`)
 2. Login with `admin` and the password from logs
 3. Go to **Settings** > **Account Settings**
 4. **Change your password immediately**
@@ -158,7 +169,7 @@ This is normal! Railway needs the second redeploy to fully configure CSRF protec
 1. Go to **Deployments** tab
 2. Right-click latest deployment > **Redeploy**
 3. Get the **new password** from logs (it may have changed)
-4. Login with new password
+4. Login with new password at TCP proxy address
 
 ### Verify Domain Configuration
 
@@ -191,9 +202,9 @@ If you see `EXISTING DATABASE DETECTED` but don't have the password:
 
 ### Campaign Links Not Working
 
-1. Ensure Railway domain is accessible
+1. Ensure Railway domain (port 80) is accessible
 2. Phishing server runs on port 80 (Railway handles HTTPS)
-3. Verify campaign template URLs use your Railway domain
+3. Verify campaign template URLs use your Railway domain from Step 2.1
 
 ---
 
@@ -210,8 +221,8 @@ This is a **one-time setup requirement**. After initial configuration, single re
 
 ## Ports
 
-- **3333** - Admin interface (generate Railway domain on this port)
-- **80** - Phishing server (used for campaign landing pages)
+- **80** - Phishing server (generate Railway domain on this port for campaigns)
+- **3333** - Admin interface (accessible via TCP proxy)
 
 ---
 
@@ -234,6 +245,7 @@ This deployment:
 - Configures `trusted_origins` dynamically from `RAILWAY_PUBLIC_DOMAIN`
 - Stores SQLite database in persistent Railway volume
 - Handles CSRF protection automatically
+- Separates admin interface (TCP proxy) from phishing campaigns (public domain)
 
 ---
 
